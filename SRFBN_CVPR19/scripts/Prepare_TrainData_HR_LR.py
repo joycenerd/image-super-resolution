@@ -15,8 +15,9 @@ import argparse
 
 
 parser=argparse.ArgumentParser()
-parser.add_argument('--save-dir',type=str,default='/eva_data/zchin/vrdl_hw4_data',help='save directory of images after pre-processing')
-parser.add_argument('--train-dir',type=str,default='/eva_data/zchin/datasets/training_hr_images/training_hr_images',help='raw hr training images')
+parser.add_argument('--save-dir',type=str,default='/eva_data/zchin/srfbn_data',help='save directory of images after pre-processing')
+parser.add_argument('--dataroot',type=str,default='/eva_data/zchin/vrdl_hw4_data',help='raw hr training images')
+parser.add_argument('--mode',type=str,default='train',help='which data to augment')
 args=parser.parse_args()
 
 
@@ -24,12 +25,12 @@ starttime = datetime.datetime.now()
 
 if not os.path.isdir(args.save_dir):
 	os.makedirs(args.save_dir)
-save_HR_path = os.path.join(args.save_dir, 'HR_x3')
-save_LR_path = os.path.join(args.save_dir, 'LR_x3')
+save_HR_path = os.path.join(args.save_dir,args.mode, 'HR_x3')
+save_LR_path = os.path.join(args.save_dir, args.mode,'LR_x3')
 os.makedirs(save_HR_path,exist_ok=True)
 os.makedirs(save_LR_path,exist_ok=True)
 
-train_HR_dir=args.train_dir
+train_HR_dir=os.path.join(args.dataroot,args.mode)
 file_list = sorted(glob(os.path.join(train_HR_dir, '*.png')))
 # print(file_list)
 HR_size = [100, 0.8, 0.7, 0.6, 0.5]
