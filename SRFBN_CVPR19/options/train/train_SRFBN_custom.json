@@ -1,0 +1,62 @@
+{
+    "mode": "sr",
+    "use_cl": true,
+    "gpu_ids": ["1"],
+    "save_dir":"/eva_data/zchin/vrdl_hw4_outputs/experiments",
+
+    "scale": 3,
+    "is_train": true,
+    "use_chop": false,
+    "rgb_range": 255,
+    "self_ensemble": false,
+    "save_image": false,
+
+    "datasets": {
+        "train": {
+            "mode": "LRHR",
+            "dataroot_HR": "/eva_data/zchin/srfbn_data/train/HR_x3",
+            "dataroot_LR": "/eva_data/zchin/srfbn_data/train/LR_x3",
+            "data_type": "img",
+            "n_workers": 3,
+            "batch_size": 16,
+            "LR_size": 13,
+            "use_flip": true,
+            "use_rot": true,
+            "noise": "."
+        },
+        "val": {
+            "mode": "LRHR",
+            "dataroot_HR": "/eva_data/zchin/srfbn_data/val/HR_x3",
+            "dataroot_LR": "/eva_data/zchin/srfbn_data/val/LR_x3",
+            "data_type": "img"
+        }
+    },
+
+    "networks": {
+        "which_model": "SRFBN",
+        "num_features": 32,
+        "in_channels": 3,
+        "out_channels": 3,
+        "num_steps": 4,
+        "num_groups": 3
+    },
+
+    "solver": {
+        "type": "ADAM",
+        "learning_rate": 0.0001,
+        "weight_decay": 0,
+        "lr_scheme": "MultiStepLR",
+        "lr_steps": [200, 400, 600, 800],
+        "lr_gamma": 0.5,
+        "loss_type": "l1",
+        "manual_seed": 0,
+        "num_epochs": 1000,
+        "skip_threshold": 3,
+        "split_batch": 1,
+        "save_ckp_step": 50,
+        "save_vis_step": 1,
+        "pretrain": null,
+        "pretrained_path": "./experiments/SRFBN_in3f32_x4/epochs/last_ckp.pth",
+        "cl_weights": [1.0, 1.0, 1.0, 1.0]
+    }
+}

@@ -45,7 +45,8 @@ def parse(opt_path):
 
     config_str = '%s_in%df%d_x%d'%(network_opt['which_model'].upper(), network_opt['in_channels'],
                                                         network_opt['num_features'], opt['scale'])
-    exp_path = os.path.join(os.getcwd(), 'experiments', config_str)
+    # exp_path = os.path.join(os.getcwd(), 'experiments', config_str)
+    exp_path=os.path.join(opt['save_dir'],config_str)
 
     if opt['is_train'] and opt['solver']['pretrain']:
         if 'pretrained_path' not in list(opt['solver'].keys()): raise ValueError("[Error] The 'pretrained_path' does not declarate in *.json")
