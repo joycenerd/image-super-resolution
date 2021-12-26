@@ -132,5 +132,6 @@ def define_net(opt):
 
     if torch.cuda.is_available():
         net = nn.DataParallel(net).cuda()
+        # net=net.cuda()
 
     return net

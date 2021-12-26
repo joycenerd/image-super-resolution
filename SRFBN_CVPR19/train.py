@@ -8,6 +8,10 @@ from utils import util
 from solvers import create_solver
 from data import create_dataloader
 from data import create_dataset
+import os
+
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 
 def main():
