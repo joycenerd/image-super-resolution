@@ -17,7 +17,7 @@ import argparse
 parser=argparse.ArgumentParser()
 parser.add_argument('--save-dir',type=str,default='/eva_data/zchin/srfbn_data',help='save directory of images after pre-processing')
 parser.add_argument('--dataroot',type=str,default='/eva_data/zchin/vrdl_hw4_data',help='raw hr training images')
-parser.add_argument('--mode',type=str,default='train',help='which data to augment')
+parser.add_argument('--mode',type=str,default='train',help='all_train, train or val')
 args=parser.parse_args()
 
 
@@ -54,7 +54,7 @@ def save_HR_LR(img, size, path, idx):
 	misc.imsave(save_LR_path + '/' + x4_rot180img_path, x4_rot180_img)
 
 
-def modcrop(image, scale=4):
+def modcrop(image, scale=3):
 	if len(image.shape) == 3:
 		h, w, _ = image.shape
 		h = h - np.mod(h, scale)
