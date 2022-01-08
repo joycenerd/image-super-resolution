@@ -89,15 +89,16 @@ def main():
 
         # save SR results for further evaluation on MATLAB
         if need_HR:
-            save_img_path = os.path.join('./results/SR/'+degrad, model_name, bm, "x%d"%scale)
+            save_img_path = os.path.join(opt['save_dir'],'results/SR/'+degrad, model_name, bm, "x%d"%scale)
         else:
-            save_img_path = os.path.join('./results/SR/'+bm, model_name, "x%d"%scale)
+            save_img_path = os.path.join(opt['save_dir'],'results/SR/'+bm, model_name, "x%d"%scale)
 
         print("===> Saving SR images of [%s]... Save Path: [%s]\n" % (bm, save_img_path))
 
         if not os.path.exists(save_img_path): os.makedirs(save_img_path)
         for img, name in zip(sr_list, path_list):
-            imageio.imwrite(os.path.join(save_img_path, name), img)
+            out_name=name.split('.')[0]+'_pred.png'
+            imageio.imwrite(os.path.join(save_img_path, out_name), img)
 
     print("==================================================")
     print("===> Finished !")
