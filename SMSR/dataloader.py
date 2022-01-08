@@ -9,7 +9,7 @@ import torch.multiprocessing as multiprocessing
 
 from torch._C import _set_worker_signal_handlers
 from torch.utils.data.dataloader import DataLoader
-from torch.utils.data.dataloader import _DataLoaderIter
+from torch.utils.data.dataloader import _SingleProcessDataLoaderIter
 from torch.utils.data import _utils
 
 if sys.version_info[0] == 2:
@@ -43,7 +43,7 @@ def _ms_loop(dataset, index_queue, data_queue, collate_fn, scale, seed, init_fn,
         else:
             data_queue.put((idx, samples))
 
-class _MSDataLoaderIter(_DataLoaderIter):
+class _MSDataLoaderIter(_SingleProcessDataLoaderIter):
     def __init__(self, loader):
         self.dataset = loader.dataset
         self.scale = loader.scale

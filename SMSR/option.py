@@ -9,7 +9,7 @@ parser.add_argument('--template', default='.',
                     help='You can set various templates in option.py')
 
 # Hardware specifications
-parser.add_argument('--n_threads', type=int, default=2,
+parser.add_argument('--n_threads', type=int, default=3,
                     help='number of threads for data loading')
 parser.add_argument('--cpu', type=bool, default=False,
                     help='use cpu only')
@@ -19,21 +19,21 @@ parser.add_argument('--seed', type=int, default=1,
                     help='random seed')
 
 # Data specifications
-parser.add_argument('--dir_data', type=str, default='D:/LongguangWang/Data',
+parser.add_argument('--dir_data', type=str, default='/eva_data/zchin/srfbn_data',
                     help='dataset directory')
-parser.add_argument('--dir_demo', type=str, default='../test',
+parser.add_argument('--dir_demo', type=str, default='/eva_data/zchin/vrdl_hw4_data/test',
                     help='demo image directory')
 parser.add_argument('--data_train', type=str, default='DIV2K',
                     help='train dataset name')
-parser.add_argument('--data_test', type=str, default='Set5',
+parser.add_argument('--data_test', type=str, default='val',
                     help='test dataset name')
 parser.add_argument('--data_range', type=str, default='1-800/801-810',
                     help='train/test data range')
-parser.add_argument('--ext', type=str, default='sep',
+parser.add_argument('--ext', type=str, default='sep_reset',
                     help='dataset file extension')
-parser.add_argument('--scale', type=str, default='2',
+parser.add_argument('--scale', type=str, default='3',
                     help='super resolution scale')
-parser.add_argument('--patch_size', type=int, default=96,
+parser.add_argument('--patch_size', type=int, default=13,
                     help='output patch size')
 parser.add_argument('--rgb_range', type=int, default=255,
                     help='maximum value of RGB')
@@ -48,9 +48,9 @@ parser.add_argument('--model', default='SMSR',
                     help='model name')
 parser.add_argument('--act', type=str, default='relu',
                     help='activation function')
-parser.add_argument('--pre_train', type=str, default= '.',
+parser.add_argument('--pre_train', type=str, default= None,
                     help='pre-trained model directory')
-parser.add_argument('--extend', type=str, default='.',
+parser.add_argument('--extend', type=str, default=None,
                     help='pre-trained model directory')
 parser.add_argument('--n_resblocks', type=int, default=16,
                     help='number of residual blocks')
@@ -133,7 +133,7 @@ args = parser.parse_args()
 template.set_template(args)
 
 if args.scale=='':
-    args.scale = [2.0]
+    args.scale = [3.0]
 else:
     args.scale = list(map(lambda x: float(x), args.scale.split('+')))
 
