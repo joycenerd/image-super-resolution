@@ -34,6 +34,7 @@ class SRData(data.Dataset):
             os.makedirs(path_bin, exist_ok=True)
 
         list_hr, list_lr = self._scan()
+        print(f'list_hr: {list_hr}')
         if args.ext.find('bin') >= 0:
             # Binary files are stored in 'bin' folder
             # If the binary file exists, load it. If not, make it.
@@ -56,8 +57,7 @@ class SRData(data.Dataset):
                 for s in self.scale:
                     os.makedirs(
                         os.path.join(
-                            self.dir_lr.replace(self.apath, path_bin),
-                            'X{}'.format(int(s))
+                            self.dir_lr.replace(self.apath, path_bin)
                         ),
                         exist_ok=True
                     )
@@ -85,6 +85,7 @@ class SRData(data.Dataset):
 
     # Below functions as used to prepare images
     def _scan(self):
+        print(f'self.dir_hr: {self.dir_hr}')
         names_hr = sorted(
             glob.glob(os.path.join(self.dir_hr, '*' + self.ext[0]))
         )
@@ -94,15 +95,17 @@ class SRData(data.Dataset):
             filename, _ = os.path.splitext(os.path.basename(f))
             for si, s in enumerate(self.scale):
                 names_lr[si].append(os.path.join(
-                    self.dir_lr, 'X{}/{}{}'.format(int(s), filename, self.ext[1])
+                    self.dir_lr, '{}{}'.format(filename, self.ext[1])
                 ))
 
         return names_hr, names_lr
 
     def _set_filesystem(self, dir_data):
+        print(f'dir_data: {dir_data}')
+        print(f'self.name: {self.name}')
         self.apath = os.path.join(dir_data, self.name)
-        self.dir_hr = os.path.join(self.apath, 'HR')
-        self.dir_lr = os.path.join(self.apath, 'LR_bicubic')
+        self.dir_hr = os.path.join(self.apath, 'HR_x3')
+        self.dir_lr = os.path.join(self.apath, 'LR_x3')
         self.ext = ('.png', '.png')
 
     def _name_hrbin(self):

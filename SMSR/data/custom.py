@@ -1,8 +1,8 @@
 import os
 from data import multiscalesrdata
 
-class DIV2K(multiscalesrdata.SRData):
-    def __init__(self, args, name='', train=True, benchmark=False):
+class CUSTOM(multiscalesrdata.SRData):
+    def __init__(self, args, name='srfbn', train=True, benchmark=False):
         super(DIV2K, self).__init__(
             args, name=name, train=train, benchmark=benchmark
         )
@@ -16,6 +16,7 @@ class DIV2K(multiscalesrdata.SRData):
 
     def _set_filesystem(self, dir_data):
         super(DIV2K, self)._set_filesystem(dir_data)
-        self.dir_hr = os.path.join(self.apath, 'train/HR_x3')
-        self.dir_lr = os.path.join(self.apath, 'train/LR_x3')
+        self.dir_hr = os.path.join(self.apath, 'HR')
+        self.dir_lr = os.path.join(self.apath, 'LR_bicubic')
+        print(self.dir_hr)
 
