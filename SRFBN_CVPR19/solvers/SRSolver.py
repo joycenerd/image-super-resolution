@@ -62,7 +62,8 @@ class SRSolver(BaseSolver):
             if self.train_opt['lr_scheme'].lower() == 'multisteplr':
                 self.scheduler = optim.lr_scheduler.MultiStepLR(self.optimizer,
                                                                 self.train_opt['lr_steps'],
-                                                                self.train_opt['lr_gamma'])
+                                                                self.train_opt['lr_gamma'],
+                                                                last_epoch=-1)
             else:
                 raise NotImplementedError('Only MultiStepLR scheme is supported!')
 
@@ -349,7 +350,7 @@ class SRSolver(BaseSolver):
 
 
     def update_learning_rate(self, epoch):
-        self.scheduler.step(epoch)
+        self.scheduler.step()
 
 
     def get_current_log(self):
