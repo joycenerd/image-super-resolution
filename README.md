@@ -105,8 +105,7 @@ Also perform offline data augmentation: scale the image to [0.8,0.7,0.6,0.5] and
 cd SRFBN_CRPR2019/scripts
 python Prepare_TrainData_HR_LR.py --save-dir <data_dir>/srfbn_data --dataroot <data_dir>/vrdl_hw4_data --mode <train_or_val>
 ```
-  * input: 
-    1. ouput data path from train valid split
+  * input: ouput data path from train valid split
   * output: `srfbn_data/` with 2 subdirectories `train/` and `val/`
 
 ## Training
@@ -209,8 +208,7 @@ If any problem occurs when you are using this project, you can first check out [
 
 ## GitHub Acknowledgement
 We thank the authors of these repositories:
-* [open-mmlab/mmdetection](https:github.com/open-mmlab/mmdetection)
-* [jsbroks/imantics](https:github.com/jsbroks/imantics)
+* [Paper99/SRFBN_CVPR19](https://github.com/Paper99/SRFBN_CVPR19)
 
 ## Citation
 If you find our work useful in your project, please cite:
