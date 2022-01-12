@@ -69,7 +69,7 @@ srfbn_data
 ```
 
 ### Option#2: Download the raw data
-1. Download the data from the Google drive link: [datasets.zip](https:drive.google.com/file/d/1GL_Rh1N-WjrvF_-YOKOyvq0zrV6TF4hb/view?usp=sharing)
+1. Download the data from the Google drive link: [datasets.zip](https://drive.google.com/file/d/1GL_Rh1N-WjrvF_-YOKOyvq0zrV6TF4hb/view?usp=sharing)
 2. After decompress the zip file, the data folder structure should look like this: 
 ```
 datasets
@@ -89,7 +89,7 @@ datasets
 
 **Note: If you download the data by following option#1 you can skip this step. You still need to download the raw data to access testing data**
 
-If your raw data folder structure is different, you will need to modify [`train_val_split.py`](./train_val_split.py) and [`SRFBN_CVPR2019/scripts/Prepare_TrainData_HR_LR.py`](./SRFBN_CVPR2019/scripts/Prepare_TrainData_HR_LR.py)before executing the code.
+If your raw data folder structure is different, you will need to modify [`train_val_split.py`](./train_val_split.py) and [`Prepare_TrainData_HR_LR.py`](./SRFBN_CVPR19/scripts/Prepare_TrainData_HR_LR.py)before executing the code.
 
 #### 1. train valid split
 In default we split the whole training set to 80% for training and 20% for validation.
@@ -102,7 +102,7 @@ python train_val_split.py --dataroot <data_dir>/datasets --ratio 0.2 --savedir <
 #### 2. Generate LR and HR images for training
 Also perform offline data augmentation: scale the image to [0.8,0.7,0.6,0.5] and rotate the image 180 degrees.
 ```
-cd SRFBN_CRPR2019/scripts
+cd SRFBN_CRPR19/scripts
 python Prepare_TrainData_HR_LR.py --save-dir <data_dir>/srfbn_data --dataroot <data_dir>/vrdl_hw4_data --mode <train_or_val>
 ```
   * input: ouput data path from train valid split
@@ -139,7 +139,7 @@ If you are training SRFBN-S model:
 
 ### Train the model
 ```
-cd SRFBN_CVPR2019
+cd SRFBN_CVPR19
 python train.py -opt options/train/train_SRFBN_custom.json
 ```
   * input: training configuration file
@@ -148,7 +148,7 @@ python train.py -opt options/train/train_SRFBN_custom.json
 ## Validation and Testing
 
 ### Modify the configuration file
-Please modify [`test_SRFBN_custom.json`](SRFBN_CVPR19/options/test/test_SRFBN_custom.json) for your own need according to [`SRFBN_CVPR19/options/test/README.md`](SRFBN_CVPR19/options/test/README.md). You must modify `scale`, `save_dir`(where to save the training results) and `pretrained_path`(model you've trained).
+Please modify [`test_SRFBN_custom.json`](SRFBN_CVPR19/options/test/test_SRFBN_custom.json) for your own need according to [`SRFBN_CVPR19/options/test/README.md`](SRFBN_CVPR19/options/test/README.md). You must modify `scale`, `save_dir`(where to save the predicted SR images) and `pretrained_path`(model you've trained).
 
 Add the following block into `"datasets"` and modify `dataroot_HR` and `dataroot_LR`:
 
