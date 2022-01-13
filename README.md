@@ -172,6 +172,7 @@ For **testing**:
 
 ### Test the model
 ```
+cd SRFBN_CVPR19
 python test.py -opt options/test/test_SRFBN_custom.json
 ```
   * input: testing configuration file
