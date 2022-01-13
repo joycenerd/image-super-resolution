@@ -1,0 +1,40 @@
+{
+    "mode": "sr",
+    "use_cl": true,
+    "gpu_ids": [1],
+
+    "scale": 3,
+    "degradation": "BI",
+    "is_train": false,
+    "use_chop": false,
+    "rgb_range": 255,
+    "self_ensemble": false,
+    "save_dir":"/home/zchin/image-super-resolution/SRFBN_CVPR19",
+
+    "datasets": {
+        // "test_set1": {
+        //     "mode": "LRHR",
+        //     "dataroot_HR": "/eva_data/zchin/srfbn_data/val/HR_x3",
+        //     "dataroot_LR": "/eva_data/zchin/srfbn_data/val/LR_x3",
+        //     "data_type": "img"
+        // }
+        "test_set1": {
+             "mode": "LR",
+             "dataroot_LR": "/eva_data/zchin/vrdl_hw4_data/test",
+             "data_type": "img"
+         }
+    },
+
+    "networks": {
+        "which_model": "SRFBN",
+        "num_features": 64,
+        "in_channels": 3,
+        "out_channels": 3,
+        "num_steps": 4,
+        "num_groups": 6
+    },
+
+    "solver": {
+        "pretrained_path": "/eva_data/zchin/vrdl_hw4_outputs/experiments/SRFBN_in3f64_x3/epochs/epoch_420_ckp.pth"
+    }
+}

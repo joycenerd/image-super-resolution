@@ -44,7 +44,7 @@ pip install scipy==1.2.2
 You can choose to download the data that we have pre-processed already or you can download the raw data.
 
 ### Option#1: Download the data that have been pre-processed
-1. Download the data from the Google drive link: [srfbn_data.zip](https:drive.google.com/file/d/1Twy3XZgUhEVMklp8lrx5z5u9CRG-a7Ro/view?usp=sharing)  
+1. Download the data from the Google drive link: [srfbn_data.zip](https://drive.google.com/file/d/1Ro8H_Q0oKF3oju38hHxyt6kXEiOy45Cn/view?usp=sharing)  
 2. After decompress the zip file, the data folder structure should look like this:
 ```
 srfbn_data
@@ -187,8 +187,8 @@ python test.py -opt options/test/test_SRFBN_custom.json
 ## Results and Models
 | **model**             | **PSNR (dB)** |**Download**|
 |:---------------------:|:-------------:|:----------:|
-| SRFBN-S (G=3,m=32)  | 27.9469       |[model]()
-| SRFBN-L (G=6,m=64)  | 28.1438       |[model]()
+| SRFBN-S (G=3,m=32)  | 28.1438       |[model](https://drive.google.com/file/d/1L9AYB9V0j2IyuGCmv3YsfiJh4CK55a_1/view?usp=sharing)
+| SRFBN-L (G=6,m=64)  | 29.3645       |[model](https://drive.google.com/file/d/1HxE6KOtY4W0iUjUQRyJXCg4Tv44Ga2j0/view?usp=sharing)
 
 
 ## Inference

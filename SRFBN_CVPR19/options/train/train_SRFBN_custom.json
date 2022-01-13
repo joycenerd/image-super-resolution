@@ -34,11 +34,11 @@
 
     "networks": {
         "which_model": "SRFBN",
-        "num_features": 32,
+        "num_features": 64,
         "in_channels": 3,
         "out_channels": 3,
         "num_steps": 4,
-        "num_groups": 3
+        "num_groups": 6
     },
 
     "solver": {
@@ -53,10 +53,10 @@
         "num_epochs": 1000,
         "skip_threshold": 3,
         "split_batch": 1,
-        "save_ckp_step": 50,
+        "save_ckp_step": 10,
         "save_vis_step": 1,
         "pretrain": null,
-        "pretrained_path": "./experiments/SRFBN_in3f32_x4/epochs/last_ckp.pth",
+        "pretrained_path": "",
         "cl_weights": [1.0, 1.0, 1.0, 1.0]
     }
 }
