@@ -15,7 +15,7 @@ In this homework, we participate in super resolution challenge on [CodaLab](http
 You can download a copy of all the files in this repository by cloning this repository:
 
 ```
-git clone https:github.com/joycenerd/image-super-resolution.git
+git clone https://github.com/joycenerd/image-super-resolution.git
 ```
 
 ## Requirements
