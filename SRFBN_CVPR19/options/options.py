@@ -7,6 +7,7 @@ import torch
 
 from utils import util
 
+
 def get_timestamp():
     return datetime.now().strftime('%y%m%d-%H%M%S')
 
@@ -38,18 +39,19 @@ def parse(opt_path):
         dataset['phase'] = phase
         dataset['scale'] = scale
         dataset['rgb_range'] = rgb_range
-        
+
     # for network initialize
     opt['networks']['scale'] = opt['scale']
     network_opt = opt['networks']
 
-    config_str = '%s_in%df%d_x%d'%(network_opt['which_model'].upper(), network_opt['in_channels'],
-                                                        network_opt['num_features'], opt['scale'])
+    config_str = '%s_in%df%d_x%d' % (network_opt['which_model'].upper(), network_opt['in_channels'],
+                                     network_opt['num_features'], opt['scale'])
     # exp_path = os.path.join(os.getcwd(), 'experiments', config_str)
-    exp_path=os.path.join(opt['save_dir'],config_str)
+    exp_path = os.path.join(opt['save_dir'], config_str)
 
     if opt['is_train'] and opt['solver']['pretrain']:
-        if 'pretrained_path' not in list(opt['solver'].keys()): raise ValueError("[Error] The 'pretrained_path' does not declarate in *.json")
+        if 'pretrained_path' not in list(opt['solver'].keys()): raise ValueError(
+            "[Error] The 'pretrained_path' does not declarate in *.json")
         exp_path = os.path.dirname(os.path.dirname(opt['solver']['pretrained_path']))
         if opt['solver']['pretrain'] == 'finetune': exp_path += '_finetune'
 
@@ -72,7 +74,7 @@ def parse(opt_path):
             save(opt)
             opt = dict_to_nonedict(opt)
 
-        print("===> Experimental DIR: [%s]"%exp_path)
+        print("===> Experimental DIR: [%s]" % exp_path)
 
     return opt
 
